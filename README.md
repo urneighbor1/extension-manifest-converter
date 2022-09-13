@@ -38,33 +38,63 @@ Original(~2021): [GoogleChromeLabs/extension-manifest-converter](https://github.
 
 ---
 
-Extension Manifest Converter is an open source tool that helps convert existing Chrome extensions to
-Manifest V3. Use it to convert an entire directory, extension zip file, or just a manifest.json
-file. All expected changes are applied to manifest.json.
+- Manifest [V2](https://developer.chrome.com/docs/extensions/mv2/) to [V3](https://developer.chrome.com/docs/extensions/mv3/intro/) Converter
+
+## Usage
+
+- Convert a directory
+
+```bash
+emc dir/path/
+```
+
+- Convert a manifest file
+
+```bash
+emc manifest.json
+```
+
+- Convert a .zip file
+
+```bash
+emc extension.zip
+```
+
+All expected changes are applied to `manifest.json`.
+
+## Installation
+
+This tool requires Python 3.6 or higher.
+
+```bash
+pip install git+https://github.com/eggplants/extension-manifest-converter
+# or
+pip install extension-manifest-converter
+```
 
 ## Features
 
-* Performs conversions on
-  * unpacked extension directories
-  * zip files containing an extension
-  * manifest.json
-* General manifest.json conversions
-  * Updates `manifest_version` field
-  * Converts between host permissions declared in `permissions` or `optional_permissions` in MV2 and
+- Performs conversions on
+  - unpacked extension directories
+  - zip files containing an extension
+  - manifest.json
+- General manifest.json conversions
+  - Updates `manifest_version` field
+  - Converts between host permissions declared in `permissions` or `optional_permissions` in MV2 and
     `host_permissions` in MV3
-  * Converts between a `content_security_policy` string in MV2 and `content_security_policy` object
+  - Converts between a `content_security_policy` string in MV2 and `content_security_policy` object
     with`extension_pages` and `sandbox` properties in MV3
-  * Converts between `background.scripts` in MV2 and background service workers
+  - Converts between `background.scripts` in MV2 and background service workers
     `background.service_worker` in MV3
-* Scripting API conversions
-  * Converts `chrome.tabs.executeScript` in MV2 to `chrome.scripting.executeScript` in MV3. If
+- Scripting API conversions
+  - Converts `chrome.tabs.executeScript` in MV2 to `chrome.scripting.executeScript` in MV3. If
     necessary, also adds `scripting` to the `permissions` array in manifest.json.
-  * Converts `chrome.tabs.insertCSS` in Mv2 to `chrome.scripting.insertCSS` in MV3. If necessary,
+  - Converts `chrome.tabs.insertCSS` in Mv2 to `chrome.scripting.insertCSS` in MV3. If necessary,
     also adds `scripting` to the `permissions` array in manifest.json.
-* Action API conversions
-  * Converts calls to `chrome.browserAction` and `chrome.pageAction` in MV2 into `chrome.action` in
+- Action API conversions
+  - Converts calls to `chrome.browserAction` and `chrome.pageAction` in MV2 into `chrome.action` in
     MV3
-  * Converts `browser_action` and `page_action` manifest entries in MV2 into `action` in MV3
+  - Converts `browser_action` and `page_action` manifest entries in MV2 into `action` in MV3
 
 ## Limitations
 
@@ -73,56 +103,7 @@ and replace changes are applied to `.js` files.
 
 This tool does not:
 
-* update any service worker code that relies on a DOM
-
-## Installation
-
-To use this tool, you'll need to set it up by following the steps below.
-
-1. Make sure Python 3 is installed.
-
-    ```bash
-    python3 --version
-    ```
-
-    If you don't see a version number, follow your OS's guidance to install Python 3 or visit
-    <https://www.python.org/downloads/> to download a recent release.
-
-2. Install `emc` command.
-
-    ```bash
-    pip install git+https://github.com/eggplants/extension-manifest-converter
-    # or
-    pip install extension-manifest-converter
-    ```
-
-3. Execute the test command.
-
-    ```bash
-    emc
-    ```
-
-    The tool should log basic usage information to the console.
-
-## Usage
-
-* Convert a directory
-
-    ```bash
-    emc dir/path/
-    ```
-
-* Convert a manifest file
-
-    ```bash
-    emc manifest.json
-    ```
-
-* Convert a .zip file
-
-    ```bash
-    emc extension.zip
-    ```
+- update any service worker code that relies on a DOM
 
 ## License
 
