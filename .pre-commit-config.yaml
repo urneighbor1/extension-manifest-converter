@@ -1,4 +1,16 @@
+ci:
+  skip: [pytest]
+
 repos:
+  - repo: local
+    hooks:
+    - id: pytest
+      name: pytest
+      stages: [commit]
+      language: system
+      entry: pytest
+      types: [python]
+      pass_filenames: false
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
