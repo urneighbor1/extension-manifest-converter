@@ -9,214 +9,219 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import unittest
 import os
 import shutil
+import unittest
 
-from src.worker import Worker
+from emc.lib.worker import Worker
+
 
 class TestConvert(unittest.TestCase):
-  cwd = os.path.dirname(os.path.abspath(__file__))
-  source = cwd + os.sep + 'test_convert' + os.sep
-  destination = ''
+    cwd = os.path.dirname(os.path.abspath(__file__))
+    source = cwd + os.sep + "test_convert" + os.sep
+    destination = ""
 
-  def setUp(self):
-    pass
+    def setUp(self) -> None:
+        pass
 
-  def tearDown(self):
-    pass
+    def tearDown(self) -> None:
+        pass
 
-  def test_mv3_to_mv2_A(self):
-    worker = Worker()
-    self.source += 'todolist_mv3'
-    self.destination = self.source + '_delete'
-    worker.work(self.source)
-    
-    expected = 2
-    actual = worker.wrapper.getManifestVersion()
-    self.assertEqual(actual, expected, 'manifest_version')
+    def test_mv3_to_mv2_A(self) -> None:
+        worker = Worker()
+        self.source += "todolist_mv3"
+        self.destination = self.source + "_delete"
+        worker.work(self.source)
 
-    manifest = worker.wrapper.manifest
-    self.assertIn('background', manifest)
-    self.assertIn('scripts', manifest['background'])
+        expected = 2
+        actual = worker.wrapper.getManifestVersion()
+        self.assertEqual(actual, expected, "manifest_version")
 
-    shutil.rmtree(self.destination)
+        manifest = worker.wrapper.manifest
+        self.assertIn("background", manifest)
+        self.assertIn("scripts", manifest["background"])
 
-  def test_mv3_to_mv2_B(self):
-    worker = Worker()
-    self.source += 'tabstourls_mv3'
-    self.destination = self.source + '_delete'
-    worker.work(self.source)
-    
-    expected = 2
-    actual = worker.wrapper.getManifestVersion()
-    self.assertEqual(actual, expected, 'manifest_version')
+        shutil.rmtree(self.destination)
 
-    shutil.rmtree(self.destination)
+    def test_mv3_to_mv2_B(self) -> None:
+        worker = Worker()
+        self.source += "tabstourls_mv3"
+        self.destination = self.source + "_delete"
+        worker.work(self.source)
 
-  def test_mv3_to_mv2_C(self):
-    worker = Worker()
-    self.source += 'timebadge_mv3'
-    self.destination = self.source + '_delete'
-    worker.work(self.source)
-    
-    expected = 2
-    actual = worker.wrapper.getManifestVersion()
-    self.assertEqual(actual, expected, 'manifest_version')
+        expected = 2
+        actual = worker.wrapper.getManifestVersion()
+        self.assertEqual(actual, expected, "manifest_version")
 
-    manifest = worker.wrapper.manifest
-    self.assertIn('background', manifest)
-    self.assertIn('scripts', manifest['background'])
+        shutil.rmtree(self.destination)
 
-    shutil.rmtree(self.destination)
+    def test_mv3_to_mv2_C(self) -> None:
+        worker = Worker()
+        self.source += "timebadge_mv3"
+        self.destination = self.source + "_delete"
+        worker.work(self.source)
 
-  def test_mv2_C(self):
-    worker = Worker()
-    self.source += 'backgroundScripts_mv2'
-    self.destination = self.source + '_delete'
-    worker.work(self.source)
-    
-    expected = 3
-    actual = worker.wrapper.getManifestVersion()
-    self.assertEqual(actual, expected, 'manifest_version')
+        expected = 2
+        actual = worker.wrapper.getManifestVersion()
+        self.assertEqual(actual, expected, "manifest_version")
 
-    manifest = worker.wrapper.manifest
-    self.assertIn('background', manifest)
-    self.assertIn('service_worker', manifest['background'])
-    self.assertEqual(manifest['background']['service_worker'], 'service_worker.js')
-    self.assertFalse(os.path.exists(worker.wrapper.destination + os.sep + 'script1.js'))
-    self.assertFalse(os.path.exists(worker.wrapper.destination + os.sep + 'script2.js'))
+        manifest = worker.wrapper.manifest
+        self.assertIn("background", manifest)
+        self.assertIn("scripts", manifest["background"])
 
-    shutil.rmtree(self.destination)
+        shutil.rmtree(self.destination)
 
-  def test23executeScript(self):
-    worker = Worker()
-    self.source += 'test23executeScript'
-    self.destination = self.source + '_delete'
-    worker.work(self.source)
-    
-    expected = 3
-    actual = worker.wrapper.getManifestVersion()
-    self.assertEqual(actual, expected, 'manifest_version')
+    def test_mv2_C(self) -> None:
+        worker = Worker()
+        self.source += "backgroundScripts_mv2"
+        self.destination = self.source + "_delete"
+        worker.work(self.source)
 
-    manifest = worker.wrapper.manifest
-    self.assertIn('background', manifest)
-    self.assertIn('service_worker', manifest['background'])
-    self.assertEqual(manifest['background']['service_worker'], 'service_worker.js')
+        expected = 3
+        actual = worker.wrapper.getManifestVersion()
+        self.assertEqual(actual, expected, "manifest_version")
 
-    self.assertIn('permissions', manifest)
-    self.assertIn('scripting', manifest['permissions'])
+        manifest = worker.wrapper.manifest
+        self.assertIn("background", manifest)
+        self.assertIn("service_worker", manifest["background"])
+        self.assertEqual(manifest["background"]["service_worker"], "service_worker.js")
+        self.assertFalse(
+            os.path.exists(worker.wrapper.destination + os.sep + "script1.js")
+        )
+        self.assertFalse(
+            os.path.exists(worker.wrapper.destination + os.sep + "script2.js")
+        )
 
-    shutil.rmtree(self.destination)
+        shutil.rmtree(self.destination)
+
+    def test23executeScript(self) -> None:
+        worker = Worker()
+        self.source += "test23executeScript"
+        self.destination = self.source + "_delete"
+        worker.work(self.source)
+
+        expected = 3
+        actual = worker.wrapper.getManifestVersion()
+        self.assertEqual(actual, expected, "manifest_version")
+
+        manifest = worker.wrapper.manifest
+        self.assertIn("background", manifest)
+        self.assertIn("service_worker", manifest["background"])
+        self.assertEqual(manifest["background"]["service_worker"], "service_worker.js")
+
+        self.assertIn("permissions", manifest)
+        self.assertIn("scripting", manifest["permissions"])
+
+        shutil.rmtree(self.destination)
+
+    def test23missingPermissions(self) -> None:
+        worker = Worker()
+        self.source += "test23missingPermissions"
+        self.destination = self.source + "_delete"
+        worker.work(self.source)
+
+        expected = 3
+        actual = worker.wrapper.getManifestVersion()
+        self.assertEqual(actual, expected, "manifest_version")
+
+        manifest = worker.wrapper.manifest
+        self.assertIn("background", manifest)
+        self.assertIn("service_worker", manifest["background"])
+        self.assertEqual(manifest["background"]["service_worker"], "service_worker.js")
+
+        self.assertIn("permissions", manifest)
+        self.assertIn("scripting", manifest["permissions"])
+
+        shutil.rmtree(self.destination)
+
+    def test23webAccessibleResources(self) -> None:
+        worker = Worker()
+        self.source += "test23webAccessibleResources"
+        self.destination = self.source + "_delete"
+        worker.work(self.source)
+
+        expected = 3
+        actual = worker.wrapper.getManifestVersion()
+        self.assertEqual(actual, expected, "manifest_version")
+
+        manifest = worker.wrapper.manifest
+        self.assertIn("background", manifest)
+        self.assertIn("service_worker", manifest["background"])
+        self.assertEqual(manifest["background"]["service_worker"], "service_worker.js")
+
+        self.assertIn("permissions", manifest)
+        self.assertIn("scripting", manifest["permissions"])
+
+        key = "web_accessible_resources"
+        self.assertIn(key, manifest)
+        self.assertEqual(len(manifest[key][0]["resources"]), 2)
+
+        shutil.rmtree(self.destination)
+
+    def test23contentSecurityPolicy(self) -> None:
+        worker = Worker()
+        self.source += "test23contentSecurityPolicy"
+        self.destination = self.source + "_delete"
+        worker.work(self.source)
+
+        expected = 3
+        actual = worker.wrapper.getManifestVersion()
+        self.assertEqual(actual, expected, "manifest_version")
+
+        manifest = worker.wrapper.manifest
+        key = "content_security_policy"
+        self.assertIn(key, manifest)
+        self.assertIn("extension_pages", manifest[key])
+        self.assertIn("sandbox", manifest[key])
+
+        shutil.rmtree(self.destination)
+
+    def test23hostPermissions(self) -> None:
+        worker = Worker()
+        self.source += "test23hostPermissions"
+        self.destination = self.source + "_delete"
+        worker.work(self.source)
+
+        expected = 3
+        actual = worker.wrapper.getManifestVersion()
+        self.assertEqual(actual, expected, "manifest_version")
+
+        manifest = worker.wrapper.manifest
+
+        key = "permissions"
+        self.assertIn(key, manifest)
+        self.assertEqual(len(manifest[key]), 2)
+
+        key = "optional_permissions"
+        self.assertIn(key, manifest)
+        self.assertEqual(len(manifest[key]), 1)
+
+        key = "host_permissions"
+        self.assertIn(key, manifest)
+        self.assertEqual(len(manifest[key]), 2)
+
+        shutil.rmtree(self.destination)
+
+    def test23simple(self) -> None:
+        worker = Worker()
+        self.source += "test23simple"
+        self.destination = self.source + "_delete"
+        worker.work(self.source)
+
+        expected = 3
+        actual = worker.wrapper.getManifestVersion()
+        self.assertEqual(actual, expected, "manifest_version")
+
+        manifest = worker.wrapper.manifest
+
+        key = "optional_permissions"
+        self.assertNotIn(key, manifest)
+
+        key = "host_permissions"
+        self.assertNotIn(key, manifest)
+
+        shutil.rmtree(self.destination)
 
 
-  def test23missingPermissions(self):
-    worker = Worker()
-    self.source += 'test23missingPermissions'
-    self.destination = self.source + '_delete'
-    worker.work(self.source)
-    
-    expected = 3
-    actual = worker.wrapper.getManifestVersion()
-    self.assertEqual(actual, expected, 'manifest_version')
-
-    manifest = worker.wrapper.manifest
-    self.assertIn('background', manifest)
-    self.assertIn('service_worker', manifest['background'])
-    self.assertEqual(manifest['background']['service_worker'], 'service_worker.js')
-
-    self.assertIn('permissions', manifest)
-    self.assertIn('scripting', manifest['permissions'])
-
-    shutil.rmtree(self.destination)
-
-  def test23webAccessibleResources(self):
-    worker = Worker()
-    self.source += 'test23webAccessibleResources'
-    self.destination = self.source + '_delete'
-    worker.work(self.source)
-    
-    expected = 3
-    actual = worker.wrapper.getManifestVersion()
-    self.assertEqual(actual, expected, 'manifest_version')
-
-    manifest = worker.wrapper.manifest
-    self.assertIn('background', manifest)
-    self.assertIn('service_worker', manifest['background'])
-    self.assertEqual(manifest['background']['service_worker'], 'service_worker.js')
-
-    self.assertIn('permissions', manifest)
-    self.assertIn('scripting', manifest['permissions'])
-
-    key = 'web_accessible_resources'
-    self.assertIn(key, manifest)
-    self.assertEqual(len(manifest[key][0]['resources']), 2)
-
-    shutil.rmtree(self.destination)
-
-  def test23contentSecurityPolicy(self):
-    worker = Worker()
-    self.source += 'test23contentSecurityPolicy'
-    self.destination = self.source + '_delete'
-    worker.work(self.source)
-    
-    expected = 3
-    actual = worker.wrapper.getManifestVersion()
-    self.assertEqual(actual, expected, 'manifest_version')
-
-    manifest = worker.wrapper.manifest
-    key = 'content_security_policy'
-    self.assertIn(key, manifest)
-    self.assertIn('extension_pages', manifest[key])
-    self.assertIn('sandbox', manifest[key])
-
-    shutil.rmtree(self.destination)
-
-  def test23hostPermissions(self):
-    worker = Worker()
-    self.source += 'test23hostPermissions'
-    self.destination = self.source + '_delete'
-    worker.work(self.source)
-    
-    expected = 3
-    actual = worker.wrapper.getManifestVersion()
-    self.assertEqual(actual, expected, 'manifest_version')
-
-    manifest = worker.wrapper.manifest
-
-    key = 'permissions'
-    self.assertIn(key, manifest)
-    self.assertEqual(len(manifest[key]), 2)
-
-    key = 'optional_permissions'
-    self.assertIn(key, manifest)
-    self.assertEqual(len(manifest[key]), 1)
-
-    key = 'host_permissions'
-    self.assertIn(key, manifest)
-    self.assertEqual(len(manifest[key]), 2)
-
-    shutil.rmtree(self.destination)
-
-  def test23simple(self):
-    worker = Worker()
-    self.source += 'test23simple'
-    self.destination = self.source + '_delete'
-    worker.work(self.source)
-
-    expected = 3
-    actual = worker.wrapper.getManifestVersion()
-    self.assertEqual(actual, expected, 'manifest_version')
-
-    manifest = worker.wrapper.manifest
-
-    key = 'optional_permissions'
-    self.assertNotIn(key, manifest)
-
-    key = 'host_permissions'
-    self.assertNotIn(key, manifest)
-
-    shutil.rmtree(self.destination)
-
-if __name__ == '__main__':
-  unittest.main()
+if __name__ == "__main__":
+    unittest.main()

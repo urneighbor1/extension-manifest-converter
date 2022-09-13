@@ -1,3 +1,5 @@
+# Extension Manifest Converter
+
 Extension Manifest Converter is an open source tool that helps convert existing Chrome extensions to
 Manifest V3. Use it to convert an entire directory, extension zip file, or just a manifest.json
 file. All expected changes are applied to manifest.json.
@@ -46,46 +48,46 @@ To use this tool, you'll need to set it up by following the steps below.
     ```
 
     If you don't see a version number, follow your OS's guidance to install Python 3 or visit
-    https://www.python.org/downloads/ to download a recent release.
+    <https://www.python.org/downloads/> to download a recent release.
 
-2. Clone this repo using the below command.
+2. Install `emc` command.
 
     ```bash
-    git clone https://github.com/GoogleChromeLabs/extension-manifest-converter
+    pip install git+https://github.com/eggplants/extension-manifest-converter
+    # or
+    pip install extension-manifest-converter
     ```
 
-3. `cd` into the cloned project directory.
-
-4. Execute the test command.
+3. Execute the test command.
 
     ```bash
-    python3 emc.py
+    emc
     ```
 
     The tool should log basic usage information to the console.
-
 
 ## Usage
 
 * Convert a directory
 
     ```bash
-    python3 emc.py dir/path/
+    emc dir/path/
     ```
 
 * Convert a manifest file
 
     ```bash
-    python3 emc.py manifest.json
+    emc manifest.json
     ```
 
 * Convert a .zip file
 
     ```bash
-    python3 emc.py extension.zip
+    emc extension.zip
     ```
-    
+
 ## License
+
 [Apache 2.0](https://github.com/GoogleChromeLabs/extension-manifest-converter/blob/master/LICENSE)
 
 This is not an official Google product.

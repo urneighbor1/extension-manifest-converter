@@ -9,25 +9,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import annotations
+
+import shutil
 import sys
-import os
-
-from .logger import Logger
-from .worker import Worker
-
-def main():
-  if len(sys.argv) != 2:
-    Logger().log("Missing source directory argument.", 0)
-    return
-
-  if not os.path.isdir(sys.argv[1]):
-    Logger().log("Source directory doesn't exist.", 0)
-    return
-
-  source = sys.argv[1]
-  worker = Worker()
-  worker.work(source)
 
 
-if __name__ == '__main__':
-  main()
+class Zip:
+    @staticmethod
+    def zip(source: str, destination: str) -> None:
+        shutil.make_archive(destination, "zip", source)
+
+
+def main() -> None:
+    if len(sys.argv) != 2:
+        return
+    path = sys.argv[1]
+    Zip.zip(path, ".")
+
+
+if __name__ == "__main__":
+    main()

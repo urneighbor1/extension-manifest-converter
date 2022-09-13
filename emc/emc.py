@@ -9,24 +9,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from zipfile import ZipFile
-import os
-from os.path import basename
-import shutil
+from __future__ import annotations
+
 import sys
 
-
-class Zip:
-  def zip(self, source, destination):
-    shutil.make_archive(destination, 'zip', source)
+from .lib.frontend import Frontend
+from .utils.arguments import Arguments
 
 
-def main():
-  if len(sys.argv) != 2:
-    return
-  path = sys.argv[1]
-  Zip().zip(path, 'zip', '.')
+def main() -> None:
+    args = Arguments()
+    args.parse()
+    if args.error:
+        print(args.error)
+        sys.exit(1)
+    Frontend(args.dict)
 
 
-if __name__ == '__main__':
-  main()
+if __name__ == "__main__":
+    main()

@@ -9,25 +9,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import json
+from __future__ import annotations
+
 import os
+import sys
 
-from . import Logger
+from .logger import Logger
+from .worker import Worker
 
-class Modifier:
-  wrapper = None
 
-  def __init__(self, wrapper):
-    Logger().log("Started " + type(self).__name__, 3)
-    self.wrapper = wrapper
+def main() -> None:
+    if len(sys.argv) != 2:
+        Logger().log("Missing source directory argument.", 0)
+        return
 
-  def run(self):
-    self._mv2() if self.wrapper.getManifestVersion() == 2 else self._mv3()
+    if not os.path.isdir(sys.argv[1]):
+        Logger().log("Source directory doesn't exist.", 0)
+        return
 
-  def writeManifest(self):
-    manifest_file = self.wrapper.destination + '/manifest.json'
-    if not os.path.exists(manifest_file):
-      return
-    if os.path.exists(manifest_file):
-      with open(manifest_file, 'w', encoding='UTF-8') as outfile:
-        json.dump(self.wrapper.manifest, outfile, indent=2)
+    source = sys.argv[1]
+    worker = Worker()
+    worker.work(source)
+
+
+if __name__ == "__main__":
+    main()

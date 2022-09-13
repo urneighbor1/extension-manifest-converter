@@ -9,17 +9,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from . import Modifier
-from . import Logger
-
-class ManifestVersionModifier(Modifier):
-  def _mv2(self):
-    self.__common()
-
-  def _mv3(self):
-    self.__common()
-
-  def __common(self):
-    Logger().log("Changing manifest_version to {}".format(self.wrapper.getManifestVersion()))
-    self.wrapper.manifest['manifest_version'] = self.wrapper.getManifestVersion()
-    self.writeManifest()
+__version__ = "0.0.0"

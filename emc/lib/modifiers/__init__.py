@@ -9,22 +9,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from . import Modifier
-from . import Logger
+from ..logger import Logger
+from .Modifier import Modifier
 
-class WebAccessibleResourcesModifier(Modifier):
-  def _mv2(self):
-    pass
-
-  def _mv3(self):
-    manifest = self.wrapper.manifest
-    key = 'web_accessible_resources'
-    if key in manifest:
-      Logger().log("Updating {}".format(key))
-      resources = manifest[key]
-      candidate = {
-        "resources": resources,
-        "matches": ["<all_urls>"]
-      }
-      self.wrapper.manifest[key] = [candidate]
-      self.writeManifest()
+__all__ = ["Logger", "Modifier"]

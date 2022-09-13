@@ -9,21 +9,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-class Logger:
-  def __new__(cls):
-    if cls._instance is None:
-      cls._instance = super(Logger, cls).__new__(cls)
-      cls._lines = []
-    return cls._instance
+from __future__ import annotations
 
-  _instance = None
-  _log_level = 2 # 0: error, 1: warn, 2: status, 3: verbose
+from . import Logger, Modifier
 
-  def log(self, message, level=2):
-    if level > self._log_level: return
-    prefix = ""
-    if level == 0:
-      prefix = "Error: "
-    elif level == 1:
-      prefix = "Warn: "
-    print("{}{}".format(prefix, message))
+
+class ManifestVersionModifier(Modifier):
+    def _mv2(self) -> None:
+        self.__common()
+
+    def _mv3(self) -> None:
+        self.__common()
+
+    def __common(self) -> None:
+        Logger().log(
+            "Changing manifest_version to {}".format(self.wrapper.getManifestVersion())
+        )
+        self.wrapper.manifest["manifest_version"] = self.wrapper.getManifestVersion()
+        self.writeManifest()

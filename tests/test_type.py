@@ -9,38 +9,39 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import unittest
 import os
+import unittest
 
-from src.type import Type, TypeEnum
+from emc.lib.type import Type, TypeEnum
+
 
 class TestType(unittest.TestCase):
-  cwd = os.path.dirname(os.path.abspath(__file__))
-  prefix = 'tests' + os.sep + 'test_type' + os.sep
-  worker = None
+    cwd = os.path.dirname(os.path.abspath(__file__))
+    prefix = "tests" + os.sep + "test_type" + os.sep
+    worker = None
 
-  def setUp(self):
-    self.type = Type()
+    def setUp(self) -> None:
+        self.type = Type()
 
-  def tearDown(self):
-    pass
+    def tearDown(self) -> None:
+        pass
 
-  def test_zip(self):
-    type = self.type.getFileType(self.prefix + "a.zip")
-    self.assertEqual(type, TypeEnum.ZIP)
+    def test_zip(self) -> None:
+        type = self.type.getFileType(self.prefix + "a.zip")
+        self.assertEqual(type, TypeEnum.ZIP)
 
-  def test_manifest(self):
-    type = self.type.getFileType(self.prefix + "manifest.json")
-    self.assertEqual(type, TypeEnum.MANIFEST)
+    def test_manifest(self) -> None:
+        type = self.type.getFileType(self.prefix + "manifest.json")
+        self.assertEqual(type, TypeEnum.MANIFEST)
 
-  def test_dir(self):
-    type = self.type.getFileType(self.prefix + "dir")
-    self.assertEqual(type, TypeEnum.DIR)
+    def test_dir(self) -> None:
+        type = self.type.getFileType(self.prefix + "dir")
+        self.assertEqual(type, TypeEnum.DIR)
 
-  def test_unknown(self):
-    type = self.type.getFileType(self.prefix + "unknown")
-    self.assertEqual(type, TypeEnum.UNKNOWN)
+    def test_unknown(self) -> None:
+        type = self.type.getFileType(self.prefix + "unknown")
+        self.assertEqual(type, TypeEnum.UNKNOWN)
 
 
-if __name__ == '__main__':
-  unittest.main()
+if __name__ == "__main__":
+    unittest.main()

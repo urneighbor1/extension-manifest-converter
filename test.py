@@ -10,17 +10,17 @@
 # limitations under the License.
 
 import unittest
-import os
 
-from tests.test_type import TestType
 from tests.test_convert import TestConvert
+from tests.test_type import TestType
+
 
 class Test(unittest.TestCase):
-  def setUp(self):
-    # TestExtension()
-    TestType()
-    TestConvert()
+    def setUp(self):
+        # TestExtension()
+        TestType()
+        TestConvert()
 
 
-if __name__ == '__main__':
-  unittest.main()
+if __name__ == "__main__":
+    unittest.main()
