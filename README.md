@@ -1,5 +1,19 @@
 # Extension Manifest Converter
 
+[![PyPI](https://img.shields.io/pypi/v/extension-manifest-converter?color=blue)](https://pypi.org/project/extension-manifest-converter) [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/eggplants/extension-manifest-converter/main.svg)](https://results.pre-commit.ci/latest/github/eggplants/extension-manifest-converter/main)
+
+[![ghcr latest](
+  https://ghcr-badge.herokuapp.com/eggplants/extension-manifest-converter/latest_tag?trim=major&label=latest
+) ![ghcr size](
+  https://ghcr-badge.herokuapp.com/eggplants/extension-manifest-converter/size)
+](
+  https://github.com/eggplants/extension-manifest-converter/pkgs/container/extension-manifest-converter
+)
+
+This repo is the forked one. Original: <GoogleChromeLabs/extension-manifest-converter>
+
+---
+
 Extension Manifest Converter is an open source tool that helps convert existing Chrome extensions to
 Manifest V3. Use it to convert an entire directory, extension zip file, or just a manifest.json
 file. All expected changes are applied to manifest.json.
