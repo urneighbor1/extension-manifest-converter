@@ -8,6 +8,10 @@
   https://results.pre-commit.ci/badge/github/eggplants/extension-manifest-converter/main.svg
   )](
   https://results.pre-commit.ci/latest/github/eggplants/extension-manifest-converter/main
+) [![Test](
+  https://github.com/eggplants/extension-manifest-converter/actions/workflows/test.yml/badge.svg
+  )](
+  https://github.com/eggplants/extension-manifest-converter/actions/workflows/test.yml
 )
 
 [![Maintainability](
