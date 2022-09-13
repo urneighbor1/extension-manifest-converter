@@ -1,4 +1,4 @@
-# Extension Manifest Converter
+# `emc`: Extension Manifest Converter
 
 [![PyPI](
   https://img.shields.io/pypi/v/extension-manifest-converter?color=blue
@@ -32,13 +32,10 @@
   https://github.com/eggplants/extension-manifest-converter/pkgs/container/extension-manifest-converter
 )
 
----
+Manifest [V2](https://developer.chrome.com/docs/extensions/mv2/) to [V3](https://developer.chrome.com/docs/extensions/mv3/intro/) Converter
 
-Original(~2021): [GoogleChromeLabs/extension-manifest-converter](https://github.com/GoogleChromeLabs/extension-manifest-converter)
+_Original(~2021): [GoogleChromeLabs/extension-manifest-converter](https://github.com/GoogleChromeLabs/extension-manifest-converter)_
 
----
-
-- Manifest [V2](https://developer.chrome.com/docs/extensions/mv2/) to [V3](https://developer.chrome.com/docs/extensions/mv3/intro/) Converter
 
 ## Usage
 
