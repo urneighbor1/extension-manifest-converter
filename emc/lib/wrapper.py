@@ -13,14 +13,12 @@ from __future__ import annotations
 
 from typing import Any
 
-Manifest = dict[str, Any]
-
 
 class Wrapper:
     destination = ""
     manifest: dict[str, Any] = {}
 
-    def __init__(self, destination: str, manifest: Manifest):
+    def __init__(self, destination: str, manifest: dict[str, Any]):
         self.destination = destination
         self.setManifest(manifest)
 
@@ -29,7 +27,7 @@ class Wrapper:
         "old": 0,
     }
 
-    def setManifest(self, manifest: Manifest) -> None:
+    def setManifest(self, manifest: dict[str, Any]) -> None:
         self.manifest = manifest
         key = "manifest_version"
         if key in manifest:
