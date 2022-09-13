@@ -1,6 +1,24 @@
 # Extension Manifest Converter
 
-[![PyPI](https://img.shields.io/pypi/v/extension-manifest-converter?color=blue)](https://pypi.org/project/extension-manifest-converter) [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/eggplants/extension-manifest-converter/main.svg)](https://results.pre-commit.ci/latest/github/eggplants/extension-manifest-converter/main)
+[![PyPI](
+  https://img.shields.io/pypi/v/extension-manifest-converter?color=blue
+  )](
+  https://pypi.org/project/extension-manifest-converter
+) [![pre-commit.ci status](
+  https://results.pre-commit.ci/badge/github/eggplants/extension-manifest-converter/main.svg
+  )](
+  https://results.pre-commit.ci/latest/github/eggplants/extension-manifest-converter/main
+)
+
+[![Maintainability](
+  https://api.codeclimate.com/v1/badges/09b8d7fd82410ad92238/maintainability
+  )](
+  https://codeclimate.com/github/eggplants/extension-manifest-converter/maintainability
+) [![Test Coverage](
+  https://api.codeclimate.com/v1/badges/09b8d7fd82410ad92238/test_coverage
+  )](
+  https://codeclimate.com/github/eggplants/extension-manifest-converter/test_coverage
+)
 
 [![ghcr latest](
   https://ghcr-badge.herokuapp.com/eggplants/extension-manifest-converter/latest_tag?trim=major&label=latest
@@ -9,8 +27,6 @@
 ](
   https://github.com/eggplants/extension-manifest-converter/pkgs/container/extension-manifest-converter
 )
-
-This repo is the forked one. Original: <GoogleChromeLabs/extension-manifest-converter>
 
 ---
 
