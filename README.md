@@ -30,6 +30,10 @@
 
 ---
 
+Original(~2021): [GoogleChromeLabs/extension-manifest-converter](https://github.com/GoogleChromeLabs/extension-manifest-converter)
+
+---
+
 Extension Manifest Converter is an open source tool that helps convert existing Chrome extensions to
 Manifest V3. Use it to convert an entire directory, extension zip file, or just a manifest.json
 file. All expected changes are applied to manifest.json.
