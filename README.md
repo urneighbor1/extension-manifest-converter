@@ -36,7 +36,6 @@ Manifest [V2](https://developer.chrome.com/docs/extensions/mv2/) to [V3](https:/
 
 _Original(~2021): [GoogleChromeLabs/extension-manifest-converter](https://github.com/GoogleChromeLabs/extension-manifest-converter)_
 
-
 ## Usage
 
 - Convert a directory
