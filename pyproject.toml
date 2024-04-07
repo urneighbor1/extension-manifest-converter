@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "extension_manifest_converter"
+dynamic = ["version"]
+description = "Convert existing Chrome extensions to Manifest V3"
+readme = "README.md"
+authors = [{ name = "Solomon Kinard", email = "solomonkinard@google.com" }]
+maintainers = [{ name = "eggplants", email = "w10776e8w@yahoo.co.jp" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+requires-python = ">=3.6"
+
+[project.urls]
+Repository = "https://github.com/eggplants/extension-manifest-converter"
+
+[project.scripts]
+emc = "emc.emc:main"
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "setuptools>=46.4.0",
+    "types-setuptools",
+]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.flake8]
+indent-size = 4
+max-line-length = 120
+extend-ignore = "W605"
+
+[tool.mypy]
+python_version = "3.10"
+show_error_codes = true
+pretty = true
+strict = true
+
+[tool.black]
+line-length = 88
